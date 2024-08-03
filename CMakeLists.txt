@@ -12,7 +12,8 @@ add_subdirectory(Input)
 
 # Executable
 add_executable(infinite_hotkeys main.cpp
-        Common/RawInputBufferDeclarations.h)
+        Common/RawInputBufferDeclarations.h
+        Common/Keybind.h)
 
 
 if (NOT CMAKE_CONFIGURATION_TYPES)
