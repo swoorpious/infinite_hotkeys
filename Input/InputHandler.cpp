@@ -1,3 +1,5 @@
+// Copyright (c) swaroop. All rights reserved.
+
 #include "InputHandler.h"
 
 InputHandler::InputHandler()
@@ -17,19 +19,19 @@ LRESULT CALLBACK InputHandler::LL_KeyboardProc(int nCode, WPARAM wParam, LPARAM 
 {
     if (nCode >= 0 && wParam == WM_KEYDOWN)
     {
-        KBDLLHOOKSTRUCT* pKeyBoard = (KBDLLHOOKSTRUCT*)lParam;
-        std::cout << "Key Pressed: " << pKeyBoard->vkCode << std::endl;
-    }
-    return CallNextHookEx(nullptr, nCode, wParam, lParam);
+        KBDLLHOOKSTRUCT* pKeyBoard = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
+        printf("Key pressed: %d\n", pKeyBoard->vkCode);
+   }
+   return CallNextHookEx(nullptr, nCode, wParam, lParam);
 }
 
 void InputHandler::CaptureInputEvents()
 {
-    HINSTANCE hInstance = GetModuleHandle(NULL);
+    HINSTANCE hInstance = GetModuleHandle(nullptr);
     hHook = SetWindowsHookEx(WH_KEYBOARD_LL, LL_KeyboardProc, hInstance, 0);
     if (!hHook)
     {
-        std::cerr << "Failed to install hook!" << std::endl;
+        std::cerr << "Failed to install hook." << std::endl;
     }
 }
 
