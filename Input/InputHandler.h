@@ -12,6 +12,7 @@
 
 #include <windows.h>
 #include <iostream>
+#include "RawInput/RawInputBufferKeyboard.h"
 
 class INPUTHANDLER_API InputHandler
 {
@@ -25,6 +26,7 @@ protected:
 
 private:
     HHOOK hHook = nullptr;
+    RawInputBufferKeyboard* keyboardInputBuffer;
 };
 
 #endif // INPUTHANDLER_H

@@ -4,15 +4,14 @@
 
 InputHandler::InputHandler()
 {
-    CaptureInputEvents();
+    // CaptureInputEvents();
+    keyboardInputBuffer = new RawInputBufferKeyboard();
+    keyboardInputBuffer->StartMessageLoop();
 }
 
 InputHandler::~InputHandler()
 {
-    if (hHook)
-    {
-        UnhookWindowsHookEx(hHook);
-    }
+    delete keyboardInputBuffer;
 }
 
 LRESULT CALLBACK InputHandler::LL_KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)

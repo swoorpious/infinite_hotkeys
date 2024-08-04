@@ -27,16 +27,5 @@ int main()
     // InputHandler.dll
     CreateInputHandler();
     
-    MSG msg;
-    while (GetMessage(&msg, NULL, 0, 0))
-    {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-
-    
-    DestroyInputHandler();
-    FreeLibrary(hMod);
-
     return 0;
 }

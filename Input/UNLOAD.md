@@ -4,3 +4,6 @@ It will have another member function to process recieved input, and `PerformActi
 ## To Figure out
 - A better structure for keyboard/mouse RawInputBuffers. Since having them talk to a DLL lib would be a nightmare.
 - Whether to use single RawInputBuffer class for both mouse and keybaord or separate classes.
+
+## Sources
+https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
